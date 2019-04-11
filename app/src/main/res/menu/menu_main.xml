@@ -4,19 +4,11 @@
 
 
     <item
-<<<<<<< HEAD
             android:id="@+id/action_buscar"
             android:title="@string/action_buscar"
             android:icon="@drawable/ic_buscar_white"
             app:showAsAction="always"
             app:actionViewClass="android.support.v7.widget.SearchView"/>
-=======
-        android:id="@+id/action_buscar"
-        android:title="@string/action_buscar"
-        android:icon="@drawable/ic_buscar_white"
-        app:showAsAction="always"
-        app:actionViewClass="android.support.v7.widget.SearchView"/>
->>>>>>> remotes/origin/Parte02---AC05
 
     <item
             android:id="@+id/action_adicionar"
@@ -24,7 +16,6 @@
             android:icon="@drawable/ic_adicionar_white"
             app:showAsAction="ifRoom"/>
     <item
-<<<<<<< HEAD
             android:id="@+id/action_atualizar"
             android:icon="@drawable/ic_atualizar_white"
             android:title="@string/action_atualizar"
@@ -34,17 +25,6 @@
             android:id="@+id/action_config"
             android:title="@string/action_config"
             app:showAsAction="never" />
-=======
-        android:id="@+id/action_atualizar"
-        android:icon="@drawable/ic_atualizar_white"
-        android:title="@string/action_atualizar"
-        app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/action_config"
-        android:title="@string/action_config"
-        app:showAsAction="never" />
->>>>>>> remotes/origin/Parte02---AC05
 
 
 </menu>
