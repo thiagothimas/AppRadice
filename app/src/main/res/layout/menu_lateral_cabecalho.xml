@@ -19,7 +19,14 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:text="Usuário"
             android:paddingTop="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+=======
+            android:text="Nome Usuário"
+            android:paddingTop="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+>>>>>>> remotes/origin/Parte02---AC05
 </LinearLayout>

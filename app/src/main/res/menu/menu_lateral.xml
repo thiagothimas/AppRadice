@@ -4,11 +4,16 @@
         <item
                 android:id="@+id/nav_servicos"
                 android:icon="@drawable/ic_disciplina_black"
+<<<<<<< HEAD
                 android:title="Serviços"
+=======
+                android:title="Disciplinas"
+>>>>>>> remotes/origin/Parte02---AC05
                 android:checked="true"/>
         <item
                 android:id="@+id/nav_cadastros"
                 android:icon="@drawable/ic_forum_black"
+<<<<<<< HEAD
                 android:title="Cadastros" />
         <item
                 android:id="@+id/nav_produtos"
@@ -18,6 +23,17 @@
                 android:id="@+id/nav_estoque"
                 android:icon="@drawable/ic_local_black"
                 android:title="Estoque" />
+=======
+                android:title="Fórum" />
+        <item
+                android:id="@+id/nav_produtos"
+                android:icon="@drawable/ic_chat_black"
+                android:title="Mensagens" />
+        <item
+                android:id="@+id/nav_estoque"
+                android:icon="@drawable/estoque"
+                android:title="Localização" />
+>>>>>>> remotes/origin/Parte02---AC05
         <item
                 android:id="@+id/nav_config"
                 android:icon="@drawable/ic_configuracoes_black"

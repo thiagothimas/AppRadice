@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
           package="com.example.appsalonenterprise">
+=======
+          package="thiago.app_radice">
+>>>>>>> remotes/origin/Parte02---AC05
 
     <application
             android:allowBackup="true"
@@ -9,6 +13,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name=".MainActivity"
                   android:theme="@style/AppTheme">
             <intent-filter>
@@ -20,6 +25,21 @@
         <activity android:name=".DebugActivity" />
         <activity android:name=".TelaInicialActivity"
                   android:theme="@style/AppTheme.Toolbar"></activity>
+=======
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".DebugActivity"></activity>
+
+        <activity android:name=".TelaInicialActivity"
+        android:theme="@style/AppTheme.Toolbar"></activity>
+
+>>>>>>> remotes/origin/Parte02---AC05
     </application>
 
 </manifest>
