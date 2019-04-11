@@ -36,11 +36,7 @@
                 <Button
                         android:id="@+id/botao_sair"
                         android:layout_width="match_parent"
-<<<<<<< HEAD
                         android:layout_height="wrap_content"
-=======
-                        android:layout_height="1000dp"
->>>>>>> remotes/origin/Parte02---AC05
                         android:text="Sair" />
             </LinearLayout>
         </ScrollView>
