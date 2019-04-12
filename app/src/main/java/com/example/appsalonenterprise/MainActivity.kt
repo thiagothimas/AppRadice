@@ -5,6 +5,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import kotlinx.android.synthetic.main.activity_servicos.*
 import kotlinx.android.synthetic.main.activity_tela_inicial.*
 import kotlinx.android.synthetic.main.login.*
 
@@ -19,6 +20,7 @@ class MainActivity : DebugActivity() {
         texto_login.setText(R.string.mensagem_inicial)
 
         botao_login.setOnClickListener {onClickLogin()}
+
     }
 
 

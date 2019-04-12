@@ -15,6 +15,7 @@ import android.support.v7.widget.SearchView
 import android.support.v7.widget.Toolbar
 import android.widget.TextView
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_tela_inicial.*
 
 
 class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -24,6 +25,9 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_inicial)
+
+        botao_services.setOnClickListener {onClickServicos()}
+        botao_sair.setOnClickListener {cliqueSair()}
 
         //val args = intent.extras
         //val nome = args.getString("nome")
@@ -35,8 +39,6 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         val mensagem = findViewById<TextView>(R.id.mensagemTelaInicial)
         mensagem.text = "Bem vindo"
 
-        val botaoSair = findViewById<Button>(R.id.botao_sair)
-        botaoSair.setOnClickListener {cliqueSair()}
 
         // Toolbar
         var toolbar = findViewById<Toolbar>(R.id.toolbar)
@@ -49,6 +51,26 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         // configuração do menu lateral
         configuraMenuLateral()
     }
+
+    fun onClickServicos() {
+        val intent = Intent(context, Servicos::class.java)
+
+        startActivityForResult(intent,1)
+    }
+
+    fun cliqueSair() {
+        val intent = Intent(context, MainActivity::class.java)
+
+        startActivityForResult(intent,1)
+    }
+
+    //fun cliqueSair() {
+    //    val returnIntent = Intent()
+     //   returnIntent.putExtra("result","Saiu do RadiceApp")
+    //    setResult(Activity.RESULT_OK,returnIntent)
+     //   finish()
+   // }
+
 
 
     private fun configuraMenuLateral() {
@@ -95,13 +117,6 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         return true
     }
 
-
-    fun cliqueSair() {
-        val returnIntent = Intent();
-        returnIntent.putExtra("result","Saiu do RadiceApp");
-        setResult(Activity.RESULT_OK,returnIntent);
-        finish();
-    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
