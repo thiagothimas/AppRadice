@@ -22,7 +22,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 
     private val context: Context get() = this
 
-    private var disciplinas = listOf<Disciplinas>()
+    private var disciplinas = listOf<Disciplina>()
     var recyclerDisc: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,7 +69,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         }.start()
     }
 
-    fun onClickDisciplina(disciplina: Disciplinas) {
+    fun onClickDisciplina(disciplina: Disciplina) {
         Toast.makeText(context, "Clicou ${disciplina.nome}",
                 Toast.LENGTH_SHORT).show()
         val intent = Intent(this, DisciplinaActivity::class.java)
@@ -183,8 +183,22 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
             Toast.makeText(this, "Clicou em Configurações", Toast.LENGTH_SHORT).show()
         } else if (id == android.R.id.home) {
             finish()
+        } else if (id == R.id.action_adicionar) {
+            // iniciar cadastro
+            val intent = Intent(context, DisciplinaActivity::class.java)
+            startActivityForResult(intent, REQUEST_CADASTRO)
         }
 
         return super.onOptionsItemSelected(item)
     }
+
+    private var REQUEST_CADASTRO = 1
+    private var REQUEST_REMOVE = 2
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == REQUEST_CADASTRO || requestCode == REQUEST_REMOVE) {
+            taskDisciplinas()
+        }
+    }
+
 }

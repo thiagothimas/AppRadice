@@ -1,4 +1,4 @@
-package br.com.fernandosousa.lmsapp
+package com.example.appsalonenterprise
 
 import android.app.Application
 import java.lang.IllegalStateException

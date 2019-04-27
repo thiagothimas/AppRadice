@@ -1,4 +1,4 @@
-package br.com.fernandosousa.lmsapp
+package com.example.appsalonenterprise
 
 data class Response (val status:String, val msg:String) {
     // verificar se o chamada foi executada com sucesso
