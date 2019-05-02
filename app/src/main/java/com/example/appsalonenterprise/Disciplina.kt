@@ -11,7 +11,7 @@ class Disciplina : Serializable {
     var professor = ""
 
     override fun toString(): String {
-        return "Disciplina: $nome"
+        return "Disciplina(nome='$nome')"
     }
 
     fun toJson(): String {

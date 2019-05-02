@@ -11,34 +11,29 @@ import android.widget.TextView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.adapter_disciplina.view.*
 
-class DisciplinaAdapter(
-        val disciplinas: List<Disciplinas>,
-        val onClick: (Disciplinas) -> Unit
-):RecyclerView.Adapter<DisciplinaAdapter.DisciplinasViewHolder>() {
+class DisciplinaAdapter (
+        val disciplinas: List<Disciplina>,
+        val onClick: (Disciplina) -> Unit): RecyclerView.Adapter<DisciplinaAdapter.DisciplinasViewHolder>() {
 
-    class DisciplinasViewHolder(view: View):
-            RecyclerView.ViewHolder(view) {
+    class DisciplinasViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val cardNome: TextView
         val cardImg: ImageView
         val cardProgress: ProgressBar
         val cardView: CardView
 
         init {
-            cardNome = view.card_nome
-            cardImg = view.card_img
-            cardProgress = view.card_progress
-            cardView = view.card_disciplina
+            cardNome = view.cardNome
+            cardImg = view.cardImg
+            cardProgress = view.cardProgress
+            cardView = view.card_disciplinas
         }
     }
 
     override fun getItemCount() = this.disciplinas.size
 
-    override fun onCreateViewHolder(
-            parent: ViewGroup,
-            viewType: Int): DisciplinasViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DisciplinasViewHolder {
 
-        val view = LayoutInflater.from(parent.context)
-                        .inflate(R.layout.adapter_disciplina, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.adapter_disciplina, parent, false)
 
         val holder = DisciplinasViewHolder(view)
         return holder
@@ -49,22 +44,22 @@ class DisciplinaAdapter(
             position: Int) {
 
         val contexto = holder.itemView.context
-        val disciplina = this.disciplinas[position]
+        val disciplina = disciplinas[position]
 
         holder.cardNome.text = disciplina.nome
         holder.cardProgress.visibility = View.VISIBLE
 
-        Picasso.with(contexto).load(disciplina.foto).fit()
-                .into(holder.cardImg,
-                object: com.squareup.picasso.Callback {
+        Picasso.with(contexto).load(disciplina.foto).fit().into(holder.cardImg,
+                object: com.squareup.picasso.Callback{
                     override fun onSuccess() {
-                        holder.cardProgress.visibility = View.INVISIBLE
+                        holder.cardProgress.visibility = View.GONE
                     }
 
                     override fun onError() {
-                        holder.cardProgress.visibility = View.INVISIBLE
+                        holder.cardProgress.visibility = View.GONE
                     }
                 })
+
         holder.itemView.setOnClickListener {onClick(disciplina)}
 
 

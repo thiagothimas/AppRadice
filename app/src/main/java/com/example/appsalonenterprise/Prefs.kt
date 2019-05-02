@@ -2,7 +2,8 @@ package com.example.appsalonenterprise
 
 import android.content.Context
 import android.content.SharedPreferences
-import br.com.fernandosousa.lmsapp.LMSApplication
+import com.example.appsalonenterprise.LMSApplication
+
 
 object Prefs {
     val PREF_ID = "LMS"

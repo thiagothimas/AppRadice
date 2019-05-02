@@ -19,8 +19,6 @@ class Servicos : AppCompatActivity() {
 
     }
 
-
-
         fun onClickVoltar() {
             val intent = Intent(context, TelaInicialActivity::class.java)
 

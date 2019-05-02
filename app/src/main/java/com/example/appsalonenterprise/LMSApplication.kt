@@ -4,7 +4,7 @@ import android.app.Application
 import java.lang.IllegalStateException
 
 class LMSApplication: Application() {
-    // chamado quando android iniciar o processo da aplicação
+
     override fun onCreate() {
         super.onCreate()
         appInstance = this

@@ -12,30 +12,34 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".DisciplinaCadastroActivity">
-        </activity>
-        <activity android:name=".DisciplinaActivity">
-        </activity>
-        <activity android:name=".Servicos">
-        </activity>
         <activity
-                android:name=".servicos"
+                android:name=".Servicos"
                 android:label="@string/title_activity_servicos"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
+
         <activity
                 android:name=".MainActivity"
                 android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <activity android:name=".DebugActivity"/>
+
         <activity
                 android:name=".TelaInicialActivity"
                 android:theme="@style/AppTheme.Toolbar"/>
+
+        <activity
+                android:name=".DisciplinaActivity"
+                android:parentActivityName=".TelaInicialActivity"
+                android:theme="@style/AppTheme.Toolbar" />
+
+        <activity android:name=".DisciplinaCadastroActivity"></activity>
+
     </application>
 
 </manifest>

@@ -21,9 +21,11 @@ import kotlinx.android.synthetic.main.activity_tela_inicial.*
 class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private val context: Context get() = this
-
     private var disciplinas = listOf<Disciplina>()
     var recyclerDisc: RecyclerView? = null
+    private var REQUEST_CADASTRO = 1
+    private var REQUEST_REMOVE = 2
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,28 +56,10 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         // configuração do menu lateral
         configuraMenuLateral()
 
-        recyclerDisc = recyclerDisciplinas
+        recyclerDisc = findViewById<RecyclerView>(R.id.recyclerDisciplinas)
         recyclerDisc?.layoutManager = LinearLayoutManager(context)
         recyclerDisc?.itemAnimator = DefaultItemAnimator()
         recyclerDisc?.setHasFixedSize(true)
-    }
-
-    fun taskDisciplinas() {
-        Thread {
-            this.disciplinas = DisciplinaService.getDisciplinas(context)
-            runOnUiThread {
-                recyclerDisc?.adapter = DisciplinaAdapter(disciplinas) {onClickDisciplina(it)}
-            }
-        }.start()
-    }
-
-    fun onClickDisciplina(disciplina: Disciplina) {
-        Toast.makeText(context, "Clicou ${disciplina.nome}",
-                Toast.LENGTH_SHORT).show()
-        val intent = Intent(this, DisciplinaActivity::class.java)
-        intent.putExtra("disciplina", disciplina)
-        startActivity(intent)
-
     }
 
     override fun onResume() {
@@ -83,23 +67,42 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         taskDisciplinas()
     }
 
-    fun onClickServicos() {
-        val intent = Intent(context, Servicos::class.java)
-
-        startActivityForResult(intent,1)
+    fun taskDisciplinas() {
+        Thread {
+            disciplinas = DisciplinaService.getDisciplinas(context)
+            runOnUiThread {
+                recyclerDisc?.adapter = DisciplinaAdapter(this.disciplinas) {onClickDisciplina(it)}
+            }
+        }.start()
     }
 
-    fun cliqueSair() {
-        val intent = Intent(context, MainActivity::class.java)
+    fun onClickDisciplina(disciplina: Disciplina) {
+        Toast.makeText(context, "Clicou ${disciplina.nome}", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, DisciplinaActivity::class.java)
+        intent.putExtra("disciplina", disciplina)
+        startActivityForResult(intent, REQUEST_REMOVE)
 
-        startActivityForResult(intent,1)
     }
 
-    //fun cliqueSair() {
-    //    val returnIntent = Intent()
-     //   returnIntent.putExtra("result","Saiu do RadiceApp")
+
+
+    //fun onClickServicos() {
+    //    val intent = Intent(context, Servicos::class.java)
+
+    //    startActivityForResult(intent,1)
+    // }
+
+    // fun cliqueSair() {
+    //     val intent = Intent(context, MainActivity::class.java)
+
+    //    startActivityForResult(intent,1)
+    // }
+
+   // fun cliqueSair() {
+   //     val returnIntent = Intent()
+   //     returnIntent.putExtra("result","Saiu do RadiceApp")
     //    setResult(Activity.RESULT_OK,returnIntent)
-     //   finish()
+   //     finish()
    // }
 
 
@@ -148,7 +151,6 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
             }
         }
 
-        // fecha menu depois de tratar o evento
         val drawer = findViewById<DrawerLayout>(R.id.layourMenuLateral)
         drawer.closeDrawer(GravityCompat.START)
         return true
@@ -176,24 +178,23 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         val id = item?.itemId
         if (id == R.id.action_buscar) {
-            Toast.makeText(this, "Clicou em Buscar", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Clicou em Buscar", Toast.LENGTH_LONG).show()
         } else if (id == R.id.action_atualizar) {
-            Toast.makeText(this, "Clicou em Atualizar", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Clicou em Atualizar", Toast.LENGTH_LONG).show()
         } else if (id == R.id.action_config) {
-            Toast.makeText(this, "Clicou em Configurações", Toast.LENGTH_SHORT).show()
-        } else if (id == android.R.id.home) {
-            finish()
+            Toast.makeText(this, "Clicou em Configurações", Toast.LENGTH_LONG).show()
         } else if (id == R.id.action_adicionar) {
             // iniciar cadastro
-            val intent = Intent(context, DisciplinaActivity::class.java)
+            val intent = Intent(context, DisciplinaCadastroActivity::class.java)
             startActivityForResult(intent, REQUEST_CADASTRO)
+        }
+
+        else if (id == android.R.id.home) {
+            finish()
         }
 
         return super.onOptionsItemSelected(item)
     }
-
-    private var REQUEST_CADASTRO = 1
-    private var REQUEST_REMOVE = 2
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQUEST_CADASTRO || requestCode == REQUEST_REMOVE) {
