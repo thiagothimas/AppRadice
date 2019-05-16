@@ -56,7 +56,7 @@ class DisciplinaAdapter (
                     }
 
                     override fun onError() {
-                        holder.cardProgress.visibility = View.VISIBLE
+                        holder.cardProgress.visibility = View.GONE
                    }
                 })
 

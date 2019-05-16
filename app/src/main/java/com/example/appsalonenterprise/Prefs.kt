@@ -6,7 +6,7 @@ import com.example.appsalonenterprise.LMSApplication
 
 
 object Prefs {
-    val PREF_ID = "LMS"
+    val PREF_ID = "LMS_AppRadice"
 
     private fun prefs(): SharedPreferences {
         val context = LMSApplication.getInstance().applicationContext
