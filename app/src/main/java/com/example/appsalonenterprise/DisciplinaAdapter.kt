@@ -49,17 +49,19 @@ class DisciplinaAdapter (
         holder.cardNome.text = disciplina.nome
         holder.cardProgress.visibility = View.VISIBLE
 
-        Picasso.with(contexto).load(disciplina.foto).fit().into(holder.cardImg,
-                object: com.squareup.picasso.Callback{
-                    override fun onSuccess() {
-                        holder.cardProgress.visibility = View.GONE
-                    }
+        if (disciplina.foto != "")
+                Picasso.with(contexto).load(disciplina.foto).fit().into(holder.cardImg,
+                        object: com.squareup.picasso.Callback{
+                            override fun onSuccess() {
+                                holder.cardProgress.visibility = View.GONE
+                            }
 
-                    override fun onError() {
-                        holder.cardProgress.visibility = View.GONE
-                   }
-                })
-
+                            override fun onError() {
+                                holder.cardProgress.visibility = View.GONE
+                           }
+                        })
+        else holder.cardProgress.visibility = View.GONE
+            
         holder.itemView.setOnClickListener {onClick(disciplina)}
 
 
