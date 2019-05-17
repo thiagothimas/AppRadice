@@ -33,12 +33,13 @@ class DisciplinaActivity : DebugActivity() {
         var texto = findViewById<TextView>(R.id.nomeDisciplina)
         texto.text = disciplina?.nome
         var imagem = findViewById<ImageView>(R.id.imagemDisciplina)
-        Picasso.with(this).load(disciplina?.foto).fit().into(imagem,
-            object: com.squareup.picasso.Callback{
-                override fun onSuccess() {}
-
-                override fun onError() {}
-            })
+        
+        if (disciplina?.foto != "")
+            Picasso.with(this).load(disciplina?.foto).fit().into(imagem,
+                object: com.squareup.picasso.Callback{
+                    override fun onSuccess() {}
+                    override fun onError() {}
+                })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
